@@ -1,20 +1,34 @@
-import '../styles/globals.css';
+import "../styles/globals.css";
+import { Inter , Crimson_Pro, Montserrat } from 'next/font/google'
 
-import { Inter } from 'next/font/google';
+const inter = Inter({
+    subsets: ['latin'],
+    variable: '--font-inter',
+    display: 'swap',
+});
 
-const inter = Inter({ subsets: ['latin'] });
+const crimson = Crimson_Pro({
+    subsets: ['latin'],
+    variable: '--font-crimson',
+    display: 'swap',
+});
 
+const montseratt = Montserrat({
+    subsets: ['latin'],
+    variable: '--font-montseratt',
+    display: 'swap',
+});
 export const metadata = {
-  title: 'Notion Next.js blog',
-  description: 'Notion Next.js blog',
+    title: 'Lyrica Classic Entertainment Tickets',
+    description: 'Tickets',
 };
 
-export default function RootLayout({ children }) {
-  return (
-    <html lang="en">
-      <body className={inter.className}>
+export default function RootLayout({children}) {
+    return (
+        <html lang="en" className={` ${montseratt.variable} ${crimson.variable} ${inter.variable} font-sans antialiased`}>
+        <body >
         {children}
-      </body>
-    </html>
-  );
+        </body>
+        </html>
+    );
 }

@@ -1,14 +1,12 @@
 import { Fragment } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import {QRCodeSVG} from 'qrcode.react';
 
 import {
-  getDatabase, getBlocks, getPageFromSlug,
+  getDatabase, getBlocks, getPageFromSlug, getPage,
 } from '../../../lib/notion';
 import Text from '../../../components/text';
-import { renderBlock } from '../../../components/notion/renderer';
-import styles from '../../../styles/post.module.css';
-
 // Return a list of `params` to populate the [slug] dynamic segment
 export async function generateStaticParams() {
   const database = await getDatabase();
@@ -19,7 +17,7 @@ export async function generateStaticParams() {
 }
 
 export default async function Page({ params }) {
-  const page = await getPageFromSlug(params?.slug);
+  const page = await getPage(params?.slug);
   const blocks = await getBlocks(page?.id);
 
   if (!page || !blocks) {
@@ -27,21 +25,17 @@ export default async function Page({ params }) {
   }
 
   return (
-    <div>
+    <div className="mx-auto max-w-5xl">
       <Head>
-        <title>{page.properties.Title?.title[0].plain_text}</title>
+        <title>{page.properties.Name?.title[0].plain_text}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <article className={styles.container}>
-        <h1 className={styles.name}>
-          <Text title={page.properties.Title?.title} />
-        </h1>
+      <article className="">
+        <div>{page.properties.Name?.title[0].plain_text}</div>
+        <QRCodeSVG value="https://reactjs.org/" />
         <section>
-          {blocks.map((block) => (
-            <Fragment key={block.id}>{renderBlock(block)}</Fragment>
-          ))}
-          <Link href="/" className={styles.back}>
+          <Link href="/" className="">
             ← Go home
           </Link>
         </section>

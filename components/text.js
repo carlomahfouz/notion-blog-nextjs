@@ -1,4 +1,3 @@
-import styles from '../styles/post.module.css';
 
 export default function Text({ title }) {
   if (!title) {
@@ -7,7 +6,7 @@ export default function Text({ title }) {
   return title.map((value) => {
     const {
       annotations: {
-        bold, code, color, italic, strikethrough, underline,
+        bold, Textcode, color, italic, strikethrough, underline,
       },
       text,
     } = value;

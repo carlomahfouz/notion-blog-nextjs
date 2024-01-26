@@ -1,7 +1,8 @@
+import "../styles/gl.css";
+
 import Link from 'next/link';
 import { getDatabase } from '../lib/notion';
 import Text from '../components/text';
-import styles from './index.module.css';
 
 export const databaseId = process.env?.NOTION_DATABASE_ID ?? 'NOTION_DATABASE_ID';
 
@@ -15,9 +16,9 @@ export default async function Page() {
   const posts = await getPosts();
   return (
     <div>
-      <main className={styles.container}>
-        <header className={styles.header}>
-          <div className={styles.logos}>
+      <main className="bg-teal-500">
+        <header className="">
+          <div className="">
             <svg
               height="80"
               width="80"
@@ -30,7 +31,7 @@ export default async function Page() {
                 fill="currentColor"
               />
             </svg>
-            <span className={styles.plus}>+</span>
+            <span className="">+</span>
             <svg
               width="133px"
               height="80px"
@@ -71,8 +72,8 @@ export default async function Page() {
           </p>
         </header>
 
-        <h2 className={styles.heading}>All Posts</h2>
-        <ol className={styles.posts}>
+        <h2 className="">All Posts</h2>
+        <ol className="">
           {posts.map((post) => {
             const date = new Date(post.last_edited_time).toLocaleString(
               'en-US',
@@ -82,17 +83,17 @@ export default async function Page() {
                 year: 'numeric',
               },
             );
-            const slug = post.properties?.Slug?.rich_text[0].text.content;
+            const slug = post.id;
             return (
-              <li key={post.id} className={styles.post}>
-                <h3 className={styles.postTitle}>
-                  <Link href={`/article/${slug}`}>
+              <li key={post.id} className="">
+                <h3 className="">
+                  <Link href={`/ticket/${slug}`}>
                     <Text title={post.properties?.Title?.title} />
                   </Link>
                 </h3>
 
-                <p className={styles.postDescription}>{date}</p>
-                <Link href={`/article/${slug}`}>Read post →</Link>
+                <p className="">{date}</p>
+                <Link href={`/ticket/${slug}`}>Read post →</Link>
               </li>
             );
           })}

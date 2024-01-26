@@ -3,33 +3,25 @@
   "version": "0.1.1",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "WATCHPACK_POLLING=true next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint --fix",
     "predeploy": "yarn build && vercel",
     "deploy": "vercel --prod"
   },
-  "author": "Samuel Kraft <samuelkraft@me.com> (https://github.com/samuelkraft)",
-  "contributors": [
-    "Samuel Kraft <samuelkraft@me.com> (https://github.com/samuelkraft)",
-    "Adam Beleko <bossbele@larven.io> (https://github.com/BossBele)"
-  ],
   "dependencies": {
-    "@notionhq/client": "^2.2.3",
-    "next": "^13.4.16",
+    "@notionhq/client": "^2.2.14",
+    "autoprefixer": "^10.4.17",
+    "next": "^14.1.0",
+    "postcss": "^8.4.33",
+    "qrcode.react": "^3.1.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-scripts": "^5.0.1",
+    "tailwindcss": "^3.4.1"
   },
   "devDependencies": {
-    "@next/eslint-plugin-next": "^13.4.16",
-    "encoding": "^0.1.13",
-    "eslint": "^7.32.0 || ^8.2.0",
-    "eslint-config-airbnb": "^19.0.4",
-    "eslint-config-next": "^13.4.16",
-    "eslint-plugin-import": "^2.25.3",
-    "eslint-plugin-jsx-a11y": "^6.5.1",
-    "eslint-plugin-react": "^7.33.1",
-    "eslint-plugin-react-hooks": "^4.3.0"
+    "encoding": "^0.1.13"
   }
 }
